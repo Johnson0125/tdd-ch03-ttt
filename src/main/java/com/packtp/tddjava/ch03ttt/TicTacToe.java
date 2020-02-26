@@ -7,11 +7,15 @@ package com.packtp.tddjava.ch03ttt;
 public class TicTacToe {
     private Character[][] board = {{'\0', '\0', '\0'}, {'\0', '\0', '\0'}, {'\0', '\0', '\0'}};
 
+    private char lastPlayer = '\0';
+
     public void play(int x, int y) {
         checkAxis(x);
         checkAxis(y);
 
         setBox(x, y);
+
+        lastPlayer = nextPlayer();
 
     }
 
@@ -27,5 +31,12 @@ public class TicTacToe {
         if (axis > 3 || axis < 1) {
             throw new RuntimeException("X is outside board");
         }
+    }
+
+    public char nextPlayer() {
+        if (lastPlayer == 'X') {
+            return 'O';
+        }
+        return 'X';
     }
 }
