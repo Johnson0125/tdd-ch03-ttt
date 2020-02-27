@@ -9,14 +9,21 @@ public class TicTacToe {
 
     private char lastPlayer = '\0';
 
-    public void play(int x, int y) {
+    public String play(int x, int y) {
         checkAxis(x);
         checkAxis(y);
 
         setBox(x, y);
 
         lastPlayer = nextPlayer();
+        for (int i = 0; i < 3; i++) {
+            if(board[0][i] == 'X' && board[1][i] == 'X' && board[2][i] == 'X'){
+                return lastPlayer + " is winner";
+            }
 
+        }
+
+        return "no winner";
     }
 
     private void setBox(int x, int y) {
